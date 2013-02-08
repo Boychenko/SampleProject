@@ -10,7 +10,7 @@ using Sample.Domain.Models;
 
 namespace Sample.DAL
 {
-	class DbInitializer : CreateDatabaseIfNotExists<SampleContext>
+	class DbInitializer : DropCreateDatabaseIfModelChanges<SampleContext>
 	{
 		protected override void Seed(SampleContext context)
 		{
