@@ -4,18 +4,19 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sample.Domain.Interfaces;
 using Sample.Domain.Interfaces.Repositories;
 using Sample.DAL.Repositories;
 using Sample.Domain.Models;
 
 namespace Sample.DAL
 {
-	internal class UnitOfWork: IDisposable
+	public class UnitOfWork: IDisposable, IUnitOfWork
 	{
 		private readonly SampleContext _context;
-		public UnitOfWork()
+		public UnitOfWork(SampleContext context)
 		{
-			_context = new SampleContext();
+			_context = context;
 		}
 
 		public void SaveChanges()
